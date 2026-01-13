@@ -26,7 +26,7 @@ export default function LoginPage() {
       localStorage.setItem('role', response.role);
 
       if (response.role === 'SUPER_ADMIN') navigate('/superadmin');
-      else if (response.role === 'ADMIN') navigate('/admin/dashboard');
+      else if (response.role === 'ADMIN') navigate('/admin');
       else setError('Invalid role');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login failed');
