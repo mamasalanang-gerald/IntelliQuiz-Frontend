@@ -2,13 +2,12 @@ import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 // Layouts
 import SuperAdminLayout from '../components/superadmin/SuperAdminLayout';
-import AdminLayout from '../components/admin/AdminLayout';
 
 // Super Admin Pages
-import SuperAdminDashboardPage from '../pages/superadmin/DashboardPage';
+import DashboardPage from '../pages/superadmin/DashboardPage';
 import UsersPage from '../pages/superadmin/UsersPage';
-import SuperAdminQuizzesPage from '../pages/superadmin/QuizzesPage';
-import SuperAdminQuestionsPage from '../pages/superadmin/QuestionsPage';
+import QuizzesPage from '../pages/superadmin/QuizzesPage';
+import QuestionsPage from '../pages/superadmin/QuestionsPage';
 import PermissionsPage from '../pages/superadmin/PermissionsPage';
 import TeamsPage from '../pages/superadmin/TeamsPage';
 import ScoreboardPage from '../pages/superadmin/ScoreboardPage';
