@@ -9,6 +9,7 @@ import {
   BiTrophy,
   BiLogOut,
   BiChevronDown,
+  BiData,
 } from 'react-icons/bi';
 import '../../styles/superadmin.css';
 
@@ -25,6 +26,7 @@ const navItems: NavItem[] = [
   { path: '/superadmin/permissions', label: 'Permissions', icon: <BiShield size={18} /> },
   { path: '/superadmin/teams', label: 'Teams', icon: <BiGroup size={18} /> },
   { path: '/superadmin/scoreboard', label: 'Scoreboard', icon: <BiTrophy size={18} /> },
+  { path: '/superadmin/backups', label: 'Backups', icon: <BiData size={18} /> },
 ];
 
 export default function SuperAdminLayout() {

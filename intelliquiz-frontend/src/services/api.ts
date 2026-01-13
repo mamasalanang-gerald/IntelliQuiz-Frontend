@@ -51,6 +51,13 @@ export const usersApi = {
     return handleResponse<User[]>(response);
   },
 
+  getById: async (id: number) => {
+    const response = await fetch(`${API_BASE_URL}/api/users/${id}`, {
+      headers: getAuthHeaders(),
+    });
+    return handleResponse<User>(response);
+  },
+
   create: async (data: CreateUserRequest) => {
     const response = await fetch(`${API_BASE_URL}/api/users`, {
       method: 'POST',
@@ -267,6 +274,52 @@ export const scoreboardApi = {
   },
 };
 
+// Backups API (SUPER_ADMIN only)
+export const backupsApi = {
+  getAll: async () => {
+    const response = await fetch(`${API_BASE_URL}/api/backups`, {
+      headers: getAuthHeaders(),
+    });
+    return handleResponse<BackupRecord[]>(response);
+  },
+
+  getById: async (id: number) => {
+    const response = await fetch(`${API_BASE_URL}/api/backups/${id}`, {
+      headers: getAuthHeaders(),
+    });
+    return handleResponse<BackupRecord>(response);
+  },
+
+  create: async () => {
+    const response = await fetch(`${API_BASE_URL}/api/backups`, {
+      method: 'POST',
+      headers: getAuthHeaders(),
+    });
+    return handleResponse<BackupRecord>(response);
+  },
+
+  restore: async (id: number) => {
+    const response = await fetch(`${API_BASE_URL}/api/backups/${id}/restore`, {
+      method: 'POST',
+      headers: getAuthHeaders(),
+    });
+    return handleResponse<BackupRecord>(response);
+  },
+
+  delete: async (id: number) => {
+    const response = await fetch(`${API_BASE_URL}/api/backups/${id}`, {
+      method: 'DELETE',
+      headers: getAuthHeaders(),
+    });
+    return handleResponse<void>(response);
+  },
+
+  download: (id: number) => {
+    const token = localStorage.getItem('token');
+    return `${API_BASE_URL}/api/backups/${id}/download?token=${token}`;
+  },
+};
+
 // Submissions API
 export const submissionsApi = {
   getByTeam: async (teamId: number) => {
@@ -391,4 +444,15 @@ export interface SubmitAnswerRequest {
   teamId: number;
   questionId: number;
   answerId: number;
+}
+
+export interface BackupRecord {
+  id: number;
+  filename: string;
+  createdAt: string;
+  fileSizeBytes: number;
+  status: 'SUCCESS' | 'FAILED' | 'IN_PROGRESS';
+  errorMessage: string | null;
+  lastRestoredAt: string | null;
+  createdByUsername: string | null;
 }

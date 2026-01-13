@@ -11,6 +11,7 @@ import QuestionsPage from '../pages/superadmin/QuestionsPage';
 import PermissionsPage from '../pages/superadmin/PermissionsPage';
 import TeamsPage from '../pages/superadmin/TeamsPage';
 import ScoreboardPage from '../pages/superadmin/ScoreboardPage';
+import BackupsPage from '../pages/superadmin/BackupsPage';
 
 // Auth Pages
 import LoginPage from '../pages/auth/LoginPage';
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: 'scoreboard',
         element: <ScoreboardPage />,
+      },
+      {
+        path: 'backups',
+        element: <BackupsPage />,
       },
     ],
   },
